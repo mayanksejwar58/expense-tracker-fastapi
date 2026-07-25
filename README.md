@@ -1,42 +1,67 @@
-# Expense Tracker API
+# 💰 Expense Tracker API
 
-A full-stack Expense Tracker application built using FastAPI, Streamlit, and Supabase. The application allows users to securely manage their daily expenses with JWT authentication and a clean dashboard.
+A full-stack **Expense Tracker Application** built using **FastAPI, Streamlit, and Supabase**. It enables users to securely manage expenses using JWT authentication, cloud database integration, and a clean dashboard interface.
 
-## Features
+---
+
+## 🚀 Features
+
+### Authentication
 
 - User Registration
-- User Login
+- Secure Login
 - JWT Authentication
-- Secure Password Hashing (bcrypt)
+- Password Hashing using bcrypt
 - User Profile
+
+### Expense Management
+
 - Add Expense
 - View Expenses
 - Update Expense
 - Delete Expense
-- Filter Expenses by Category and Date
+- Filter Expenses by Category
+- Filter Expenses by Date
 - Expense Summary Dashboard
-- REST API Documentation
-- Deployed on Render
-
-## Tech Stack
 
 ### Backend
-- FastAPI
+
+- RESTful API
+- Repository-Service Architecture
+- Swagger API Documentation
+
+### Deployment
+
+- Backend deployed on Render
+- Frontend deployed on Streamlit
+
+---
+
+## 🛠 Tech Stack
+
+### Backend
+
 - Python
+- FastAPI
 - Supabase (PostgreSQL)
 - JWT Authentication
 - bcrypt
 - Uvicorn
 
 ### Frontend
+
 - Streamlit
 
 ### Deployment
+
 - Render
+- Streamlit Community Cloud
 
-## Project Structure
+---
 
-```
+## 📂 Project Structure
+
+```text
 ExpenseTracker/
 │
 ├── backend/
@@ -44,9 +69,12 @@ ExpenseTracker/
 │   ├── routers/
 │   ├── services/
 │   ├── repositories/
-│   ├── schemas/
 │   ├── models/
+│   ├── schemas/
 │   ├── utils/
+│   ├── config/
+│   ├── middleware/
+│   ├── database/
 │   └── main.py
 │
 ├── frontend/
@@ -55,34 +83,34 @@ ExpenseTracker/
 │   └── services/
 │
 ├── README.md
+├── LICENSE
 ├── requirements.txt
 └── .gitignore
 ```
 
-## Live Demo
+---
 
-Frontend:
-YOUR FRONTEND URL
+## ⚙ Installation
 
-Backend:
-YOUR BACKEND URL
-
-API Documentation:
-YOUR_BACKEND_URL/docs
-
-## Installation
+Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/mayanksejwar58/expense-tracker-fastapi.git
+```
 
-cd ExpenseTracker
+Move into the project
+
+```bash
+cd expense-tracker-fastapi
 ```
 
 Backend
 
 ```bash
 cd backend
+
 pip install -r requirements.txt
+
 uvicorn app.main:app --reload
 ```
 
@@ -90,32 +118,113 @@ Frontend
 
 ```bash
 cd frontend
+
 pip install -r requirements.txt
+
 streamlit run app.py
 ```
 
-## API Endpoints
+---
 
-Authentication
+## 🌐 Live Demo
 
-- POST /auth/register
-- POST /auth/login
+### Frontend
 
-Profile
+Replace with your deployed Streamlit URL.
 
-- GET /profile
+### Backend
 
-Expenses
+Replace with your deployed Render URL.
 
-- GET /expense
-- POST /expense
-- PUT /expense/{id}
-- DELETE /expense/{id}
+### API Documentation
 
-Summary
+```
+YOUR_RENDER_URL/docs
+```
 
-- GET /expense/summary
+---
 
-## Author
+## 📡 REST API Endpoints
 
-Mayank Sejwar
+### Authentication
+
+| Method | Endpoint |
+|---------|----------|
+| POST | /auth/register |
+| POST | /auth/login |
+
+### Profile
+
+| Method | Endpoint |
+|---------|----------|
+| GET | /profile |
+
+### Expenses
+
+| Method | Endpoint |
+|---------|----------|
+| GET | /expense |
+| POST | /expense |
+| PUT | /expense/{id} |
+| DELETE | /expense/{id} |
+
+### Reports
+
+| Method | Endpoint |
+|---------|----------|
+| GET | /expense/summary |
+
+---
+
+## 📸 Screenshots
+
+- Login
+- Dashboard
+- Expense List
+- Swagger Documentation
+
+(Add screenshots here)
+
+---
+
+## 🌟 Project Highlights
+
+- FastAPI REST APIs
+- JWT Authentication
+- Repository-Service Architecture
+- Supabase Cloud Database
+- Secure Password Storage
+- Modular Backend Design
+- Cloud Deployment
+
+---
+
+## 🚀 Future Improvements
+
+- Monthly Reports
+- Budget Planning
+- Charts & Analytics
+- CSV Export
+- PDF Reports
+- Email Notifications
+
+---
+
+## 👨‍💻 Author
+
+**Mayank Sejwar**
+
+B.Tech Artificial Intelligence & Data Science
+
+Madhav Institute of Technology & Science (MITS), Gwalior
+
+GitHub:
+https://github.com/mayanksejwar58
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+See the LICENSE file for more information.

@@ -1,8 +1,6 @@
 from fastapi import APIRouter
-
 from app.schemas.user import UserRegister
 from app.schemas.user import UserLogin
-
 from app.services.auth_service import AuthService
 
 router=APIRouter(

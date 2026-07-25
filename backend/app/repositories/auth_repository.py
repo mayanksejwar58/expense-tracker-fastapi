@@ -3,9 +3,7 @@ from app.database.base import db
 
 class AuthRepository:
     """Data access layer for the `users` table in Supabase."""
-
     TABLE = "users"
-
     @classmethod
     def get_user_by_email(cls, email: str):
         response = (
@@ -15,7 +13,6 @@ class AuthRepository:
             .limit(1)
             .execute()
         )
-
         rows = response.data
         return rows[0] if rows else None
 
@@ -28,7 +25,6 @@ class AuthRepository:
             .limit(1)
             .execute()
         )
-
         rows = response.data
         return rows[0] if rows else None
 
@@ -39,6 +35,5 @@ class AuthRepository:
             "email": user.email,
             "password": user.password,  # already hashed by the service layer
         }
-
         response = db.client.table(cls.TABLE).insert(payload).execute()
         return response.data[0]

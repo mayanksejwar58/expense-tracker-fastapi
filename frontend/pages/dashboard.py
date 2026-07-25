@@ -1,7 +1,6 @@
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-
 from services import api
 
 st.set_page_config(page_title="Dashboard", page_icon="📊", layout="wide")

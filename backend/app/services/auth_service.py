@@ -8,17 +8,14 @@ class AuthService:
     @staticmethod
     def register(user):
         existing_user = AuthRepository.get_user_by_email(user.email)
-
         if existing_user:
             return {
                 "status": "error",
                 "message": "Email already exists",
                 "data": None
             }
-
         user.password = hash_password(user.password)
         saved_user = AuthRepository.create_user(user)
-
         return {
             "status": "success",
             "message": "User registered successfully",
@@ -32,28 +29,24 @@ class AuthService:
     @staticmethod
     def login(user):
         existing_user = AuthRepository.get_user_by_email(user.email)
-
         if existing_user is None:
             return {
                 "status": "error",
                 "message": "User not found",
                 "data": None
             }
-
         if not verify_password(user.password, existing_user["password"]):
             return {
                 "status": "error",
                 "message": "Incorrect password",
                 "data": None
             }
-
         access_token = create_access_token(
             {
                 "sub": existing_user["id"],
                 "email": existing_user["email"]
             }
         )
-
         return {
             "status": "success",
             "message": "Login successful",

@@ -1,8 +1,6 @@
 from datetime import date, timedelta
-
 import pandas as pd
 import streamlit as st
-
 from services import api
 
 st.set_page_config(page_title="All Expenses", page_icon="📋", layout="wide")

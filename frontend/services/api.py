@@ -1,21 +1,10 @@
-"""
-Thin wrapper around the FastAPI backend. Every function returns the
-parsed JSON body (a dict) so pages can just check response["status"].
-Network/timeout errors are caught and turned into the same
-{"status": "error", "message": ...} shape so pages never need to
-handle exceptions themselves.
-"""
-
 import requests
 import streamlit as st
-
 try:
     BASE_URL = st.secrets["API_BASE_URL"]
 except Exception:
     BASE_URL = "http://localhost:8000"
-
 TIMEOUT = 10
-
 
 def _handle(response: requests.Response) -> dict:
     try:
@@ -29,13 +18,11 @@ def _handle(response: requests.Response) -> dict:
 
 def _request(method: str, path: str, auth: bool = False, **kwargs) -> dict:
     headers = kwargs.pop("headers", {})
-
     if auth:
         token = st.session_state.get("access_token")
         if not token:
             return {"status": "error", "message": "Not logged in"}
         headers["Authorization"] = f"Bearer {token}"
-
     try:
         response = requests.request(
             method, f"{BASE_URL}{path}", headers=headers, timeout=TIMEOUT, **kwargs
@@ -54,8 +41,6 @@ def _request(method: str, path: str, auth: bool = False, **kwargs) -> dict:
     return _handle(response)
 
 
-# ---- Auth ----
-
 def register(name: str, email: str, password: str) -> dict:
     return _request(
         "POST", "/auth/register",
@@ -73,8 +58,6 @@ def login(email: str, password: str) -> dict:
 def get_profile() -> dict:
     return _request("GET", "/profile/", auth=True)
 
-
-# ---- Expenses ----
 
 def create_expense(title: str, amount: float, category: str, expense_date: str) -> dict:
     return _request(

@@ -1,12 +1,10 @@
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-
 from app.utils.jwt_handler import verify_token
 
 # Shows a padlock + "Authorize" button in /docs and rejects requests
 # with no/garbled Authorization header before we even see them.
 bearer_scheme = HTTPBearer()
-
 
 def get_current_user(
     credentials: HTTPAuthorizationCredentials = Depends(bearer_scheme)
@@ -26,9 +24,7 @@ def get_current_user(
             detail="Invalid or expired token",
             headers={"WWW-Authenticate": "Bearer"},
         )
-
     return payload
-
 
 def get_current_user_id(
     current_user: dict = Depends(get_current_user)

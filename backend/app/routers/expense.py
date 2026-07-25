@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Depends, Query
-
 from app.schemas.expense import ExpenseCreate, ExpenseUpdate
 from app.services.expense_service import ExpenseService
 from app.middleware.auth import get_current_user_id

@@ -8,16 +8,13 @@ st.set_page_config(
     layout="centered"
 )
 
-# ---- Session state ----
 if "access_token" not in st.session_state:
     st.session_state.access_token = None
     st.session_state.user_name = None
     st.session_state.user_email = None
 
-
 def is_logged_in() -> bool:
     return st.session_state.access_token is not None
-
 
 def logout():
     st.session_state.access_token = None
@@ -25,23 +22,17 @@ def logout():
     st.session_state.user_email = None
     st.rerun()
 
-
-# ---- Logged-in view ----
 if is_logged_in():
     st.title("💰 Expense Tracker")
     st.success(f"Logged in as **{st.session_state.user_name}** ({st.session_state.user_email})")
-
     st.write(
         "Use the sidebar to add expenses, browse your history, "
         "or view your spending dashboard."
     )
-
     if st.button("Log out"):
         logout()
-
     st.stop()
 
-# ---- Logged-out view: Login / Register ----
 st.title("💰 Expense Tracker")
 st.caption("Track your spending, see where your money goes.")
 
@@ -59,7 +50,6 @@ with tab_login:
             else:
                 with st.spinner("Logging in..."):
                     result = api.login(email, password)
-
                 if result.get("status") == "success":
                     data = result["data"]
                     st.session_state.access_token = data["access_token"]

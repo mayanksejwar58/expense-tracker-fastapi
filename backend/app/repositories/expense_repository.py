@@ -7,7 +7,6 @@ class ExpenseRepository:
     Every method is scoped to a user_id so users can only ever
     see/modify their own rows.
     """
-
     TABLE = "expenses"
 
     @classmethod
@@ -19,7 +18,6 @@ class ExpenseRepository:
             "category": expense.category,
             "expense_date": str(expense.expense_date),
         }
-
         response = db.client.table(cls.TABLE).insert(payload).execute()
         return response.data[0]
 
@@ -34,7 +32,6 @@ class ExpenseRepository:
             query = query.gte("expense_date", start_date)
         if end_date:
             query = query.lte("expense_date", end_date)
-
         response = query.order("expense_date", desc=True).execute()
         return response.data
 
@@ -48,7 +45,6 @@ class ExpenseRepository:
             .limit(1)
             .execute()
         )
-
         rows = response.data
         return rows[0] if rows else None
 
@@ -61,7 +57,6 @@ class ExpenseRepository:
             .eq("user_id", user_id)
             .execute()
         )
-
         rows = response.data
         return rows[0] if rows else None
 
@@ -74,5 +69,4 @@ class ExpenseRepository:
             .eq("user_id", user_id)
             .execute()
         )
-
         return len(response.data) > 0

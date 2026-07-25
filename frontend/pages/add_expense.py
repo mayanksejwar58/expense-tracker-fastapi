@@ -1,7 +1,5 @@
 from datetime import date
-
 import streamlit as st
-
 from services import api
 
 st.set_page_config(page_title="Add Expense", page_icon="➕")
@@ -33,7 +31,6 @@ with st.form("add_expense_form", clear_on_submit=True):
                 result = api.create_expense(
                     title.strip(), amount, category, str(expense_date)
                 )
-
             if result.get("status") == "success":
                 st.success(f"Added '{title}' — ${amount:.2f}")
             else:

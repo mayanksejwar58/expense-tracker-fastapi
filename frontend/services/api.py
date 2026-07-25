@@ -1,9 +1,8 @@
 import requests
 import streamlit as st
-try:
-    BASE_URL = st.secrets["API_BASE_URL"]
-except Exception:
-    BASE_URL = "http://localhost:8000"
+
+BASE_URL = "https://expense-tracker-fastapi-ae9w.onrender.com"
+
 TIMEOUT = 10
 
 def _handle(response: requests.Response) -> dict:

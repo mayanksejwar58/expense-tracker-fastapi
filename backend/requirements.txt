@@ -1,4 +1,3 @@
-# --- Backend (FastAPI) ---
 fastapi==0.115.6
 uvicorn[standard]==0.34.0
 pydantic==2.10.4
@@ -10,9 +9,3 @@ bcrypt==4.2.1
 email-validator==2.2.0
 passlib
 postgrest
-
-# --- Frontend (Streamlit) ---
-streamlit==1.41.1
-requests==2.32.3
-pandas==2.2.3
-plotly==5.24.1

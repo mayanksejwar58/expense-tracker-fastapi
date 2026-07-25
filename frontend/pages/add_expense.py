@@ -32,6 +32,6 @@ with st.form("add_expense_form", clear_on_submit=True):
                     title.strip(), amount, category, str(expense_date)
                 )
             if result.get("status") == "success":
-                st.success(f"Added '{title}' — ${amount:.2f}")
+                st.success(f"Added '{title}' — ₹{amount:.2f}")
             else:
                 st.error(result.get("message", "Could not add expense."))

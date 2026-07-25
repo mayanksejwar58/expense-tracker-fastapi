@@ -24,7 +24,7 @@ if summary["count"] == 0:
     st.stop()
 
 col1, col2 = st.columns(2)
-col1.metric("Total spent", f"${summary['total']:,.2f}")
+col1.metric("Total spent", f"₹{summary['total']:,.2f}")
 col2.metric("Number of expenses", summary["count"])
 
 st.divider()

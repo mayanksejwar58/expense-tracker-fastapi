@@ -42,7 +42,7 @@ if not expenses:
 
 df = pd.DataFrame(expenses)
 total = df["amount"].sum()
-st.metric("Total for this view", f"${total:,.2f}")
+st.metric("Total for this view", f"₹{total:,.2f}")
 
 st.divider()
 
@@ -51,7 +51,7 @@ for expense in expenses:
     c1.write(f"**{expense['title']}**")
     c2.write(expense["category"])
     c3.write(expense["expense_date"])
-    c4.write(f"${expense['amount']:,.2f}")
+    c4.write(f"₹{expense['amount']:,.2f}")
     if c5.button("Delete", key=f"del_{expense['id']}"):
         del_result = api.delete_expense(expense["id"])
         if del_result.get("status") == "success":
